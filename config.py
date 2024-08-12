@@ -12,21 +12,21 @@ load_dotenv()
 API_ID = int(getenv("API_ID", "28331991"))
 API_HASH = getenv("API_HASH", "125e05dbb96685e960c429d14403339e")
 # ------------------------------------------------------
-BOT_TOKEN = getenv("BOT_TOKEN", "7308816128:AAH-FggHUaq-1kIS0mFHBIUrn5A09tM6hco")
+BOT_TOKEN = getenv("BOT_TOKEN", "")
 # -------------------------------------------------------
-OWNER_USERNAME = getenv("OWNER_USERNAME","vampire_daddy")
+OWNER_USERNAME = getenv("OWNER_USERNAME","OfficialDurgesh")
 # --------------------------------------------------------
-BOT_USERNAME = getenv("BOT_USERNAME" , "ackerman089_bot")
+BOT_USERNAME = getenv("BOT_USERNAME" , "EraVibesXbot")
 # --------------------------------------------------------
 BOT_NAME = getenv("BOT_NAME" , "mikasa ackerman")
 # ---------------------------------------------------------
-ASSUSERNAME = getenv("ASSUSERNAME" , "assistant235")
+ASSUSERNAME = getenv("ASSUSERNAME" , "Assistant_of_Era")
 # ---------------------------------------------------------
 
 
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-MONGO_DB_URI = getenv("MONGO_DB_URI", mongodb+srv://senpai:TheChampu@database.q6zl7gt.mongodb.net/?retryWrites=true&w=majority&appName=database)
+MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://Kingkhan:Kingkhan@cluster0.fprrg.mongodb.net/?retryWrites=true&w=majority")
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 
@@ -35,10 +35,10 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 17000))
 # ----------------------------------------------------------------
 
 # ----------------------------------------------------------------
-LOGGER_ID = int(getenv("LOGGER_ID", -1002087696194))
+LOGGER_ID = int(getenv("LOGGER_ID", -1002243074516))
 # ----------------------------------------------------------------
 # ----------------------------------------------------------------
-OWNER_ID = int(getenv("OWNER_ID", 6847461291))
+OWNER_ID = int(getenv("OWNER_ID", 1679112664))
 # -----------------------------------------------------------------
 # -----------------------------------------------------------------
 
@@ -53,7 +53,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 # ----------------------------------------------------------------
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/tobiuchiha018/Aiko-X-Music-",
+    "PAHLE JAKE DURU KO PAPPA BOL",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv(
@@ -68,7 +68,7 @@ GIT_TOKEN = getenv(
 # ------------------------------------------------------------------------
 # -------------------------------------------------------------------------
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Phoenix_Netweb")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/PHOENIX_X_TEAM")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+7ehnJA3aMb84OGNl")
 # ------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------
 
