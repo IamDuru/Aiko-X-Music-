@@ -11,7 +11,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Set up OpenAI API
 openai.api_key = GPT_API
-MODEL = "text-davinci-003"  # Specify your model here
+
+# Define API URL for some other service
+API_URL = "https://some-other-api.com/endpoint"
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
