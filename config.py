@@ -9,8 +9,8 @@ from pyrogram import filters
 load_dotenv()
 # ------------------------------------
 # -----------------------------------------------------
-API_ID = int(getenv("API_ID", "28331991"))
-API_HASH = getenv("API_HASH", "125e05dbb96685e960c429d14403339e")
+API_ID = int(getenv("API_ID", ""))
+API_HASH = getenv("API_HASH", "")
 # ------------------------------------------------------
 BOT_TOKEN = getenv("BOT_TOKEN", "")
 # -------------------------------------------------------
@@ -18,7 +18,7 @@ OWNER_USERNAME = getenv("OWNER_USERNAME","OfficialDurgesh")
 # --------------------------------------------------------
 BOT_USERNAME = getenv("BOT_USERNAME" , "EraVibesXbot")
 # --------------------------------------------------------
-BOT_NAME = getenv("BOT_NAME" , "mikasa ackerman")
+BOT_NAME = getenv("BOT_NAME", "")
 # ---------------------------------------------------------
 ASSUSERNAME = getenv("ASSUSERNAME" , "Assistant_of_Era")
 # ---------------------------------------------------------
@@ -53,7 +53,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 # ----------------------------------------------------------------
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "PAHLE JAKE DURU KO PAPPA BOL",
+    "https://github.com/OpAlex07/Aiko-X-Music-",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "Master")
 GIT_TOKEN = getenv(
@@ -67,8 +67,8 @@ GIT_TOKEN = getenv(
 
 # ------------------------------------------------------------------------
 # -------------------------------------------------------------------------
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Phoenix_Netweb")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+7ehnJA3aMb84OGNl")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/Dns_Official_Channel")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/DNS_NETWORK")
 # ------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------
 
