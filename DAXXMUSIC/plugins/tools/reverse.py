@@ -33,7 +33,7 @@ class STRINGS:
     OPEN_PAGE: str = "ᴏᴘᴇɴ ᴘᴀɢᴇ"
 
 
-@app.on_message(filters.command(["pp","reverse","sauce"]))
+@app.on_message(filters.command(["pp","reverse","sauce"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def on_reverse(app: app, message: Message) -> None:
     if not message.reply_to_message:
         await message.reply(STRINGS.REPLY_TO_MEDIA)
