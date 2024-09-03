@@ -64,7 +64,7 @@ async def unpin_callbacc(client, CallbackQuery):
     )
 
 
-@app.on_message(filters.command(["unpinall"]))
+@app.on_message(filters.command(["unpinall"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def unpin_command_handler(client, message):
     chat = message.chat
     chat_id = chat.id
