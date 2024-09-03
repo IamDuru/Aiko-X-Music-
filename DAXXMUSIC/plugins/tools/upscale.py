@@ -9,42 +9,86 @@ from pyrogram import filters
 import pyrogram
 from uuid import uuid4
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
+import aiofiles
+import aiohttp
+import requests
 
+async def load_image(image_path: str, url: str) -> str:
+    os.makedirs(os.path.dirname(image_path), exist_ok=True)
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            if response.status == 200:
+                async with aiofiles.open(image_path, mode="wb") as file:
+                    await file.write(await response.read())
+                return image_path
+            return None
 
-@app.on_message(filters.reply & filters.command("upscale", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
-async def upscale_image(app, message):
-    try:
-        if not message.reply_to_message or not message.reply_to_message.photo:
-            await message.reply_text("**ᴘʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀɴ ɪᴍᴀɢᴇ ᴛᴏ ᴜᴘsᴄᴀʟᴇ ɪᴛ.**")
-            return
+@app.on_message(filters.command("upscale", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
+async def upscale_image(client, message):
+    chat_id = message.chat.id
+    replied_message = message.reply_to_message
+    
+    if not config.DEEP_API:
+        return await message.reply_text("I can't upscale without a DEEP API key!")
+    
+    if not replied_message or not replied_message.photo:
+        return await message.reply_text("Please reply to an image.")
+    
+    aux_message = await message.reply_text("Upscaling, please wait...")
+    image_path = await replied_message.download()
+    
+    response = requests.post(
+        "https://api.deepai.org/api/torch-srgan",
+        files={'image': open(image_path, 'rb')},
+        headers={'api-key': config.DEEP_API}
+    ).json()
+    
+    image_url = response.get("output_url")
+    if not image_url:
+        return await aux_message.edit("Failed to upscale image, please try again.")
+    
+    downloaded_image = await load_image(image_path, image_url)
+    if not downloaded_image:
+        return await aux_message.edit("Failed to download upscaled image, please try again.")
+    
+    await aux_message.delete()
+    await message.reply_document(document=downloaded_image)
 
-        image = message.reply_to_message.photo.file_id
-        file_path = await app.download_media(image)
-
-        with open(file_path, "rb") as image_file:
-            f = image_file.read()
-
-        b = base64.b64encode(f).decode("utf-8")
-
-        async with httpx.AsyncClient() as http_client:
-            response = await http_client.post(
-                "https://api.qewertyy.me/upscale", data={"image_data": b}, timeout=None
-            )
-
-        with open("upscaled.png", "wb") as output_file:
-            output_file.write(response.content)
-
-        await client.send_document(
-            message.chat.id,
-            document="upscaled.png",
-            caption="**ʜᴇʀᴇ ɪs ᴛʜᴇ ᴜᴘsᴄᴀʟᴇᴅ ɪᴍᴀɢᴇ!**",
-        )
-
-    except Exception as e:
-        print(f"**ғᴀɪʟᴇᴅ ᴛᴏ ᴜᴘsᴄᴀʟᴇ ᴛʜᴇ ɪᴍᴀɢᴇ**: {e}")
-        await message.reply_text("**ғᴀɪʟᴇᴅ ᴛᴏ ᴜᴘsᴄᴀʟᴇ ᴛʜᴇ ɪᴍᴀɢᴇ. ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ**.")
-
-
+@app.on_message(filters.command("gdraw", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
+async def draw_image(client, message):
+    chat_id = message.chat.id
+    user_id = message.sender_chat.id if message.sender_chat else message.from_user.id
+    replied_message = message.reply_to_message
+    
+    if not config.DEEP_API:
+        return await message.reply_text("I can't generate images without a DEEP API key!")
+    
+    if replied_message and replied_message.text:
+        query = replied_message.text
+    elif len(message.text.split()) > 1:
+        query = message.text.split(None, 1)[1]
+    else:
+        return await message.reply_text("Please provide text or reply to a text message.")
+    
+    aux_message = await message.reply_text("Generating image, please wait...")
+    image_path = f"cache/{user_id}_{chat_id}_{message.id}.png"
+    
+    response = requests.post(
+        "https://api.deepai.org/api/text2img",
+        data={'text': query, 'grid_size': '1', 'image_generator_version': 'hd'},
+        headers={'api-key': config.DEEP_API}
+    ).json()
+    
+    image_url = response.get("output_url")
+    if not image_url:
+        return await aux_message.edit("Failed to generate image, please try again.")
+    
+    downloaded_image = await load_image(image_path, image_url)
+    if not downloaded_image:
+        return await aux_message.edit("Failed to download generated image, please try again.")
+    
+    await aux_message.delete()
+    await message.reply_photo(photo=downloaded_image, caption=query)
 # ------------
 
 
