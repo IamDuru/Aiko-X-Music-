@@ -6,7 +6,7 @@ import os
 from DAXXMUSIC import app
 
 
-@app.on_message(filters.command("tg"))
+@app.on_message(filters.command("tg", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def search_command(_, message):
     msg = await message.reply("Searching...")
     async with aiohttp.ClientSession() as session:
