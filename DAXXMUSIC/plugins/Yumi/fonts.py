@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from DAXXMUSIC.utils.daxx_font import Fonts
 from DAXXMUSIC import app
 
-@app.on_message(filters.command(["font", "fonts"]))
+@app.on_message(filters.command(["font", "fonts"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def style_buttons(c, m, cb=False):
     text = m.text.split(' ',1)[1]
     buttons = [
