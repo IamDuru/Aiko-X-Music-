@@ -6,7 +6,7 @@ from DAXXMUSIC.misc import SUDOERS
 from DAXXMUSIC.utils.database import autoend_off, autoend_on
 
 
-@app.on_message(filters.command("autoend") & SUDOERS)
+@app.on_message(filters.command("autoend", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & SUDOERS)
 async def auto_end_stream(_, message: Message):
     usage = "<b>ᴇxᴀᴍᴘʟᴇ :</b>\n\n/autoend [ᴇɴᴀʙʟᴇ | ᴅɪsᴀʙʟᴇ]"
     if len(message.command) != 2:
