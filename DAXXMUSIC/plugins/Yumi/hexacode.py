@@ -18,7 +18,7 @@ def text_to_hex(text):
 
 # IAM_DAXX ...........................
 
-@app.on_message(filters.command("code"))
+@app.on_message(filters.command("code", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 def convert_text(_, message):
     if len(message.command) > 1:
         input_text = " ".join(message.command[1:])
