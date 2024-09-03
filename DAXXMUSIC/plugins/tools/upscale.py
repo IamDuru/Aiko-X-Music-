@@ -65,7 +65,7 @@ def get_waifu_data(tags):
     else:
         return None
 
-@app.on_message(filters.command("waifu"))
+@app.on_message(filters.command("waifu", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 def waifu_command(client, message):
     try:
         tags = ['maid']  # You can customize the tags as needed
