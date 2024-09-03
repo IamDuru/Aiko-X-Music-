@@ -4,7 +4,7 @@ from DAXXMUSIC import app
 
 ############.....
 
-@app.on_message(filters.command(["ip"]))
+@app.on_message(filters.command(["ip"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 def ip_info(_, message):
     if len(message.command) != 2:
         message.reply_text("Please provide an IP address after the command. Example: /ip 8.8.8.8")
