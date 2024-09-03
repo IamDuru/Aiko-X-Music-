@@ -313,7 +313,7 @@ async def song_download_cb(client, CallbackQuery, _):
 
 
 
-@app.on_message(filters.command(["ig"], ["/", "!", "."]))
+@app.on_message(filters.command(["ig"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def download_instareels(c: app, m: Message):
     try:
         reel_ = m.command[1]
@@ -343,7 +343,7 @@ async def download_instareels(c: app, m: Message):
 
 ######
 
-@app.on_message(filters.command(["reel"], ["/", "!", "."]))
+@app.on_message(filters.command(["reel"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def instagram_reel(client, message):
     if len(message.command) == 2:
         url = message.command[1]
