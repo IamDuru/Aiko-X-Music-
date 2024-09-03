@@ -58,10 +58,6 @@ async def init():
     LOGGER("DAXXMUSIC").info("𝗦𝗧𝗢𝗣 𝗘𝗥𝗔 𝗩𝗜𝗕𝗘𝗦🎻 𝗕𝗢𝗧..")
 
 
-async def init():
-    # Your initialization code here
-    pass
-
 def main():
     asyncio.get_event_loop().run_until_complete(init())
 
