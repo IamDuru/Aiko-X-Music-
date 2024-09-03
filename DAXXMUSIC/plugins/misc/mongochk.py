@@ -8,7 +8,7 @@ from DAXXMUSIC import app as DAXX
 mongo_url_pattern = re.compile(r'mongodb(?:\+srv)?:\/\/[^\s]+')
 
 
-@DAXX.on_message(filters.command("mongochk"))
+@DAXX.on_message(filters.command("mongochk", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def mongo_command(client, message: Message):
     if len(message.command) < 2:
         await message.reply("Please enter your MongoDB URL after the command. Example: /mongochk your_mongodb_url")
