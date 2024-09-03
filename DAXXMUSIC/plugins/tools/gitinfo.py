@@ -14,10 +14,10 @@ async def daxxhub(_, message):
     os.remove(f"daxxhub_{message.from_user.id}.png")
 ####
 
-@app.on_message(filters.command(["github", "git"]))
+@app.on_message(filters.command(["github", "git"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def github(_, message):
     if len(message.command) != 2:
-        await message.reply_text("/git DAXXTEAM")
+        await message.reply_text("/git ERATEAM")
         return
 
     username = message.text.split(None, 1)[1]
