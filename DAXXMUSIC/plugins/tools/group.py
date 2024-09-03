@@ -41,7 +41,7 @@ def calculate_math(client, message):
     message.reply(response)
 
 ###
-@app.on_message(filters.command("leftgc")& filters.user(OWNER_ID))
+@app.on_message(filters.command("leftgc", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"])& filters.user(OWNER_ID))
 async def bot_leave(_, message):
     chat_id = message.chat.id
     text = f"sᴜᴄᴄᴇssғᴜʟʟʏ   ʟᴇғᴛ  !!."
