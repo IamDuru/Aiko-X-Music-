@@ -1,5 +1,5 @@
 {
-    "name": "AIKO MUSIC",
+    "name": "ERA VIBES",
     "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls.",
     "logo": "https://telegra.ph/file/dbb3222d0fd3712e2a0e4.jpg",
     "keywords": [
@@ -24,6 +24,11 @@
       },
       "BOT_TOKEN": {
         "description": "A Bot's token from Botfather",
+        "value": "",
+        "required": true
+      },
+      "GPT_API": {
+        "description": "Enter Gpt Api from https://platform.openai.com/api-keys",
         "value": "",
         "required": true
       },
