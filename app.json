@@ -32,6 +32,11 @@
         "value": "",
         "required": true
       },
+      "DEEP_API": {
+        "description": "Enter Deep Api from https://deepai.org/",
+        "value": "",
+        "required": true
+      },
       "MONGO_DB_URI": {
         "description": "Get a mongodb url from https://cloud.mongodb.com.",
         "value": "",
