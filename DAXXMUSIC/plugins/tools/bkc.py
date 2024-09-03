@@ -20,7 +20,7 @@ LANG = "https://telegra.ph/file/423414459345bf18310f5.gif"
 CUTIE = "https://64.media.tumblr.com/d701f53eb5681e87a957a547980371d2/tumblr_nbjmdrQyje1qa94xto1_500.gif"
 
 
-@app.on_message(filters.command("horny"))
+@app.on_message(filters.command("horny", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def horny(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -30,7 +30,7 @@ async def horny(_, message):
     await message.reply_text(HORNY, reply_markup=BUTTON, disable_web_page_preview=True, quote=True)
 
 
-@app.on_message(filters.command("gay"))
+@app.on_message(filters.command("gay", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def gay(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -40,7 +40,7 @@ async def gay(_, message):
     await message.reply_text(GAY, reply_markup=BUTTON, disable_web_page_preview=True, quote=True)
 
 
-@app.on_message(filters.command("lezbian"))
+@app.on_message(filters.command("lezbian", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def lezbian(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -50,7 +50,7 @@ async def lezbian(_, message):
     await message.reply_text(FEK, reply_markup=BUTTON, disable_web_page_preview=True, quote=True)
 
 
-@app.on_message(filters.command("boob"))
+@app.on_message(filters.command("boob", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def boob(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -60,7 +60,7 @@ async def boob(_, message):
     await message.reply_text(BOOBS, reply_markup=BUTTON, disable_web_page_preview=True, quote=True)
 
 
-@app.on_message(filters.command("cock"))
+@app.on_message(filters.command("cock", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def cock(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
@@ -70,7 +70,7 @@ async def cock(_, message):
     await message.reply_text(COCK, reply_markup=BUTTON, disable_web_page_preview=True, quote=True)
 
 
-@app.on_message(filters.command("cute"))
+@app.on_message(filters.command("cute", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def cute(_, message):
     user_id = message.from_user.id
     user_name = message.from_user.first_name
