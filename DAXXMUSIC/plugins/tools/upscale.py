@@ -11,7 +11,7 @@ from uuid import uuid4
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 
 
-@app.on_message(filters.reply & filters.command("upscale"))
+@app.on_message(filters.reply & filters.command("upscale", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def upscale_image(app, message):
     try:
         if not message.reply_to_message or not message.reply_to_message.photo:
