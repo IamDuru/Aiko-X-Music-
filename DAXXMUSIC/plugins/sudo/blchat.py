@@ -8,7 +8,7 @@ from DAXXMUSIC.utils.decorators.language import language
 from config import BANNED_USERS
 
 
-@app.on_message(filters.command(["blchat", "blacklistchat"]) & SUDOERS)
+@app.on_message(filters.command(["blchat", "blacklistchat"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & SUDOERS)
 @language
 async def blacklist_chat_func(client, message: Message, _):
     if len(message.command) != 2:
