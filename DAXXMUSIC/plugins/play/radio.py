@@ -1,3 +1,4 @@
+"""
 import logging
 
 from pyrogram import filters
@@ -175,7 +176,8 @@ async def radio(client, message: Message):
     else:
         await message.reply(
             f"ɢɪᴠᴇ ᴍᴇ ᴀ sᴛᴀᴛɪᴏɴ ɴᴀᴍᴇ ᴛᴏ ᴘʟᴀʏ ʀᴀᴅɪᴏ\nʙᴇʟᴏᴡ ᴀʀᴇ sᴏᴍᴇ sᴛᴀᴛɪᴏɴ ɴᴀᴍᴇ:\n{valid_stations}"
-        )
+        ) 
+"""
 
 
 __MODULE__ = "Rᴀᴅɪᴏ"
