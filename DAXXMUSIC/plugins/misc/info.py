@@ -73,19 +73,39 @@ font_path = "DAXXMUSIC/assets/hiroko.ttf"
 
 
 INFO_TEXT = """**
-❅─────✧❅✦❅✧─────❅
-            ✦ ᴜsᴇʀ ɪɴғᴏ ✦
+╔════════「👤 𝐔𝐒𝐄𝐑 𝐈𝐍𝐅𝐎 👤」════════╗
 
-➻ ᴜsᴇʀ ɪᴅ ‣ **`{}`
-**➻ ғɪʀsᴛ ɴᴀᴍᴇ ‣ **{}
-**➻ ʟᴀsᴛ ɴᴀᴍᴇ ‣ **{}
-**➻ ᴜsᴇʀɴᴀᴍᴇ ‣ **`{}`
-**➻ ᴍᴇɴᴛɪᴏɴ ‣ **{}
-**➻ ʟᴀsᴛ sᴇᴇɴ ‣ **{}
-**➻ ᴅᴄ ɪᴅ ‣ **{}
-**➻ ʙɪᴏ ‣ **`{}`
+👤 𝐁𝐀𝐒𝐈𝐂 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
+• 𝐈𝐃: `{}`
+• 𝐅𝐈𝐑𝐒𝐓 𝐍𝐀𝐌𝐄: {}
+• 𝐋𝐀𝐒𝐓 𝐍𝐀𝐌𝐄: {}
+• 𝐔𝐒𝐄𝐑𝐍𝐀𝐌𝐄: @{}
+• 𝐌𝐄𝐍𝐓𝐈𝐎𝐍: {}
 
-**❅─────✧❅✦❅✧─────❅**
+📊 𝐒𝐓𝐀𝐓𝐔𝐒 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
+• 𝐋𝐀𝐒𝐓 𝐒𝐄𝐄𝐍: {}
+• 𝐃𝐂 𝐈𝐃: {}
+
+📝 𝐏𝐑𝐎𝐅𝐈𝐋𝐄 𝐃𝐄𝐓𝐀𝐈𝐋𝐒
+• 𝐁𝐈𝐎: `{}`
+
+• 𝐏𝐑𝐎𝐅𝐈𝐋𝐄 𝐏𝐈𝐂𝐒: {}
+• 𝐀𝐍𝐈𝐌𝐀𝐓𝐄𝐃 𝐏𝐅𝐏: {}
+• 𝐔𝐒𝐄𝐑 𝐓𝐘𝐏𝐄: {}
+
+🛡️ 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 𝐒𝐓𝐀𝐓𝐔𝐒
+• 𝐕𝐄𝐑𝐈𝐅𝐈𝐄𝐃: {}
+• 𝐑𝐄𝐒𝐓𝐑𝐈𝐂𝐓𝐄𝐃: {}
+• 𝐒𝐂𝐀𝐌: {}
+• 𝐅𝐀𝐊𝐄: {}
+• 𝐏𝐑𝐄𝐌𝐈𝐔𝐌: {}
+
+ℹ️ 𝐀𝐃𝐃𝐈𝐓𝐈𝐎𝐍𝐀𝐋 𝐈𝐍𝐅𝐎
+• 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 𝐂𝐑𝐄𝐀𝐓𝐄𝐃: {}
+• 𝐂𝐎𝐌𝐌𝐎𝐍 𝐂𝐇𝐀𝐓𝐒: {}
+• 𝐔𝐒𝐄𝐑 𝐋𝐀𝐍𝐆: {}
+
+╚════════「🌟 𝐄𝐍𝐃 𝐎𝐅 𝐈𝐍𝐅𝐎 🌟」════════╝**
 """
 
 # --------------------------------------------------------------------------------- #
@@ -95,120 +115,85 @@ async def userstatus(user_id):
       user = await app.get_users(user_id)
       x = user.status
       if x == enums.UserStatus.RECENTLY:
-         return "Recently."
+         return "Recently"
       elif x == enums.UserStatus.LAST_WEEK:
-          return "Last week."
+          return "Last week"
       elif x == enums.UserStatus.LONG_AGO:
-          return "Long time ago."
+          return "Long time ago"
       elif x == enums.UserStatus.OFFLINE:
-          return "Offline."
+          return "Offline"
       elif x == enums.UserStatus.ONLINE:
-         return "Online."
+         return "Online"
    except:
-        return "**sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ʜᴀᴘᴘᴇɴᴇᴅ !**"
+        return "**𝐒𝐎𝐌𝐄𝐓𝐇𝐈𝐍𝐆 𝐖𝐄𝐍𝐓 𝐖𝐑𝐎𝐍𝐆!**"
     
 
 # --------------------------------------------------------------------------------- #
 
-
-
-@app.on_message(filters.command(["info", "userinfo"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
+@app.on_message(filters.command(["info", "userinfo"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def userinfo(_, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
     
+    async def get_user_info(user_id):
+        try:
+            user_info = await app.get_chat(user_id)
+            user = await app.get_users(user_id)
+            status = await userstatus(user.id)
+            id = user_info.id
+            dc_id = user.dc_id or "Unknown"
+            first_name = user_info.first_name 
+            last_name = user_info.last_name if user_info.last_name else "No last name"
+            username = user_info.username if user_info.username else "No Username"
+            mention = user.mention
+            bio = user_info.bio if user_info.bio else "No bio set"
+            profile_pics = await app.get_chat_photos_count(user_id)
+            is_animated = "Yes" if user.photo and user.photo.is_animated else "No"
+            user_type = "Bot" if user.is_bot else "Human"
+            is_verified = "Yes" if user.is_verified else "No"
+            is_restricted = "Yes" if user.is_restricted else "No"
+            is_scam = "Yes" if user.is_scam else "No"
+            is_fake = "Yes" if user.is_fake else "No"
+            is_premium = "Yes" if user.is_premium else "No"
+            joined_date = user.joined_date.strftime("%Y-%m-%d %H:%M:%S") if user.joined_date else "Unknown"
+            common_chats = len(await user.get_common_chats())
+            language_code = user.language_code or "Unknown"
+
+            return (id, first_name, last_name, username, mention, status, dc_id, bio, 
+                    profile_pics, is_animated, user_type, is_verified, is_restricted, 
+                    is_scam, is_fake, is_premium, joined_date, common_chats, language_code)
+        except Exception as e:
+            return str(e)
+
     if not message.reply_to_message and len(message.command) == 2:
         try:
             user_id = message.text.split(None, 1)[1]
-            user_info = await app.get_chat(user_id)
-            user = await app.get_users(user_id)
-            status = await userstatus(user.id)
-            id = user_info.id
-            dc_id = user.dc_id
-            first_name = user_info.first_name 
-            last_name = user_info.last_name if user_info.last_name else "No last name"
-            username = user_info.username if user_info.username else "No Username"
-            mention = user.mention
-            bio = user_info.bio if user_info.bio else "No bio set"
-            
-            if user.photo:
-                # User has a profile photo
-                photo = await app.download_media(user.photo.big_file_id)
-                welcome_photo = await get_userinfo_img(
-                    bg_path=bg_path,
-                    font_path=font_path,
-                    user_id=user.id,
-                    profile_path=photo,
-                )
+            user_info = await get_user_info(user_id)
+            if isinstance(user_info, tuple):
+                await message.reply_text(INFO_TEXT.format(*user_info))
             else:
-                # User doesn't have a profile photo, use random_photo directly
-                welcome_photo = random.choice(random_photo)
-                
-            await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
-                id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
+                await message.reply_text(user_info)
         except Exception as e:
             await message.reply_text(str(e))        
-      
+    
     elif not message.reply_to_message:
         try:
-            user_info = await app.get_chat(user_id)
-            user = await app.get_users(user_id)
-            status = await userstatus(user.id)
-            id = user_info.id
-            dc_id = user.dc_id
-            first_name = user_info.first_name 
-            last_name = user_info.last_name if user_info.last_name else "No last name"
-            username = user_info.username if user_info.username else "No Username"
-            mention = user.mention
-            bio = user_info.bio if user_info.bio else "No bio set"
-            
-            if user.photo:
-                # User has a profile photo
-                photo = await app.download_media(user.photo.big_file_id)
-                welcome_photo = await get_userinfo_img(
-                    bg_path=bg_path,
-                    font_path=font_path,
-                    user_id=user.id,
-                    profile_path=photo,
-                )
+            user_info = await get_user_info(user_id)
+            if isinstance(user_info, tuple):
+                await message.reply_text(INFO_TEXT.format(*user_info))
             else:
-                # User doesn't have a profile photo, use random_photo directly
-                welcome_photo = random.choice(random_photo)
-                
-            await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
-                id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
+                await message.reply_text(user_info)
         except Exception as e:
             await message.reply_text(str(e))
 
     elif message.reply_to_message:
         user_id = message.reply_to_message.from_user.id
         try:
-            user_info = await app.get_chat(user_id)
-            user = await app.get_users(user_id)
-            status = await userstatus(user.id)
-            id = user_info.id
-            dc_id = user.dc_id
-            first_name = user_info.first_name 
-            last_name = user_info.last_name if user_info.last_name else "No last name"
-            username = user_info.username if user_info.username else "No Username"
-            mention = user.mention
-            bio = user_info.bio if user_info.bio else "No bio set"
-            
-            if user.photo:
-                # User has a profile photo
-                photo = await app.download_media(user.photo.big_file_id)
-                welcome_photo = await get_userinfo_img(
-                    bg_path=bg_path,
-                    font_path=font_path,
-                    user_id=user.id,
-                    profile_path=photo,
-                )
+            user_info = await get_user_info(user_id)
+            if isinstance(user_info, tuple):
+                await message.reply_text(INFO_TEXT.format(*user_info))
             else:
-                # User doesn't have a profile photo, use random_photo directly
-                welcome_photo = random.choice(random_photo)
-                
-            await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
-                id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
+                await message.reply_text(user_info)
         except Exception as e:
             await message.reply_text(str(e))
                 
