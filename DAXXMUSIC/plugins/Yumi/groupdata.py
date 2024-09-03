@@ -6,7 +6,7 @@ from pyrogram import enums, filters
 
 from DAXXMUSIC import app
 
-@app.on_message(~filters.private & filters.command(["groupdata"]), group=2)
+@app.on_message(~filters.private & filters.command(["gcdata"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]), group=2)
 async def instatus(app, message):
     start_time = time.perf_counter()
     user = await app.get_chat_member(message.chat.id, message.from_user.id)
@@ -15,7 +15,7 @@ async def instatus(app, message):
         enums.ChatMemberStatus.ADMINISTRATOR,
         enums.ChatMemberStatus.OWNER,
     ):
-        sent_message = await message.reply_text("GETTING INFORMATION...")
+        sent_message = await message.reply_text("💻")
         deleted_acc = 0
         premium_acc = 0
         banned = 0
@@ -36,16 +36,40 @@ async def instatus(app, message):
         end_time = time.perf_counter()
         timelog = "{:.2f}".format(end_time - start_time)
         await sent_message.edit(f"""
-**➖➖➖➖➖➖➖
-➲ NAME : {message.chat.title} ✅
-➲ MEMBERS : [ {count} ]🫂
-➖➖➖➖➖➖➖
-➲ BOTS : {bot}💡
-➲ ZOMBIES : {deleted_acc}🧟
-➲ BANNED : {banned}🚫
-➲ PREMIUM USERS : {premium_acc}🎁
-➖➖➖➖➖➖➖
-TIME TAKEN : {timelog} S**""")
+ ___________________________________________
+|                                           |
+|  ========= GROUP STATUS REPORT =========  |
+|___________________________________________|
+|                                           |
+| > IDENTIFIER: {message.chat.title}        |
+| > CODENAME: {message.chat.id}             |
+|                                           |
+|  +-----------------------------------+    |
+|  |         PERSONNEL COUNT           |    |
+|  +-----------------------------------+    |
+|  | TOTAL OPERATIVES:    [{count}]    |    |
+|  | ACTIVE AGENTS:       [{count - deleted_acc - banned}] |    |
+|  | AUTOMATED UNITS:     [{bot}]      |    |
+|  | DORMANT ACCOUNTS:    [{deleted_acc}]   |    |
+|  | BLACKLISTED:         [{banned}]   |    |
+|  | ELITE MEMBERS:       [{premium_acc}]   |    |
+|  +-----------------------------------+    |
+|                                           |
+|  /////////////////////////////////////    |
+|  ///       DAILY OPERATIONS        ///    |
+|  /////////////////////////////////////    |
+|    TRANSMISSIONS: {uncached}              |
+|    COMMANDING OFFICERS: N/A               |
+|                                           |
+|  :::::::::::::::::::::::::::::::::::::::  |
+|  ::: SYSTEM INFORMATION :::::::::::::::   |
+|  INITIALIZATION DATE: N/A                 |
+|  CURRENT BUILD: N/A                       |
+|  :::::::::::::::::::::::::::::::::::::::  |
+|                                           |
+|  [REPORT GENERATED IN {timelog} CYCLES]   |
+|___________________________________________|
+""")
     else:
         sent_message = await message.reply_text("ONLY ADMINS CAN USE THIS !")
         await sleep(5)
