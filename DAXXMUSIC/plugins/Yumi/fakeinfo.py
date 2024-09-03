@@ -31,7 +31,7 @@ from DAXXMUSIC import app
 random_user_api_url = 'https://randomuser.me/api/'
 
 
-@app.on_message(filters.command("fake", prefixes="/"))
+@app.on_message(filters.command("fake", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 def generate_fake_user_by_country(client, message):
     country_name = message.text.split("/fake ", maxsplit=1)[1]
     
