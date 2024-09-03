@@ -11,7 +11,7 @@ def get_domain_hosting_info(domain_name):
         return None
 
 
-@app.on_message(filters.command("domain"))
+@app.on_message(filters.command("domain", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def get_domain_info(client, message):
     if len(message.command) > 1:
         domain_name = message.text.split("/domain ", 1)[1]
