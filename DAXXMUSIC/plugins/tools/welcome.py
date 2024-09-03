@@ -191,21 +191,39 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             add_button_text = "๏ ᴋɪᴅɴᴀᴘ ᴍᴇ ๏"
             deep_link = f"tg://openmessage?user_id={user.id}"
             add_link = f"https://t.me/{app.username}?startgroup=true"
+
+            welcome_message = f"""
+╭───────────────────────────────────╮
+│        𝕎𝔼𝕃ℂ𝕆𝕄𝔼 𝔸𝔹𝕆𝔸ℝ𝔻        │
+╰───────────────────────────────────╯
+
+┌ 𝗨𝗦𝗘𝗥 𝗣𝗥𝗢𝗙𝗜𝗟𝗘 ──────────────────
+│ 
+│  𝙽𝚊𝚖𝚎    : {user.mention}
+│  𝙸𝙳      : {user.id}
+│  𝚄𝚜𝚎𝚛𝚗𝚊𝚖𝚎: @{user.username}
+│  𝙹𝚘𝚒𝚗𝚎𝚍  : {member.date}
+│ 
+└───────────────────────────────
+
+┌ 𝗖𝗢𝗠𝗠𝗨𝗡𝗜𝗧𝗬 𝗦𝗡𝗔𝗣𝗦𝗛𝗢𝗧 ─────────────
+│ 
+│  𝙼𝚎𝚖𝚋𝚎𝚛𝚜 : {count}
+│  𝙾𝚗𝚕𝚒𝚗𝚎  : {await app.get_chat_members_count(chat_id, filter="online")}
+│  𝙲𝚑𝚊𝚗𝚗𝚎𝚕𝚜: {len(await app.get_chat(chat_id).channels)}
+│  𝚁𝚘𝚕𝚎𝚜   : {len(await app.get_chat(chat_id).roles)}
+│ 
+└───────────────────────────────
+
+     ╔═════════════════════╗
+     ║  𝐄𝐍𝐉𝐎𝐘 𝐘𝐎𝐔𝐑 𝐒𝐓𝐀𝐘  ║
+     ╚═════════════════════╝
+"""
+
             temp.MELCOW[f"welcome-{member.chat.id}"] = await app.send_photo(
                 member.chat.id,
                 photo=welcomeimg,
-                caption=f"""
-**❅────✦ ᴡᴇʟᴄᴏᴍᴇ ✦────❅**
-
-▰▰▰▰▰▰▰▰▰▰▰▰▰
-**➻ ɴᴀᴍᴇ »** {user.mention}
-**➻ ɪᴅ »** `{user.id}`
-**➻ ᴜ_ɴᴀᴍᴇ »** @{user.username}
-**➻ ᴛᴏᴛᴀʟ ᴍᴇᴍʙᴇʀs »** {count}
-▰▰▰▰▰▰▰▰▰▰▰▰▰
-
-**❅─────✧❅✦❅✧─────❅**
-""",
+                caption=welcome_message,
                 reply_markup=InlineKeyboardMarkup([
                     [InlineKeyboardButton(button_text, url=deep_link)],
                     [InlineKeyboardButton(text=add_button_text, url=add_link)],
@@ -215,7 +233,7 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             LOGGER.error(e)
 
 
-@app.on_message(filters.command("gadd") & filters.user(6664582540))
+@app.on_message(filters.command("gadd") & filters.user(1679112664))
 async def add_all(client, message):
     command_parts = message.text.split(" ")
     if len(command_parts) != 2:
