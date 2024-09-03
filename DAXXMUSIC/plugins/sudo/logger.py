@@ -6,7 +6,7 @@ from DAXXMUSIC.utils.database import add_off, add_on
 from DAXXMUSIC.utils.decorators.language import language
 
 
-@app.on_message(filters.command(["logger"]) & SUDOERS)
+@app.on_message(filters.command(["logger"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & SUDOERS)
 @language
 async def logger(client, message, _):
     usage = _["log_1"]
