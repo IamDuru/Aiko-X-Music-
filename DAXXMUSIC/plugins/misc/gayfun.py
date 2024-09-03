@@ -35,7 +35,7 @@ def gay_calculator_command(client, message: Message):
 
 
 
-@app.on_message(filters.command("logo"))
+@app.on_message(filters.command("logo", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def logo(app, msg: Message):
     if len(msg.command) == 1:
        return await msg.reply_text("Usage:\n\n /logo daxx")
@@ -45,7 +45,7 @@ async def logo(app, msg: Message):
     await msg.reply_photo(
         photo=f"{req}")
 
-@app.on_message(filters.command("animelogo"))
+@app.on_message(filters.command("animelogo", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def logo(app, msg: Message):
     if len(msg.command) == 1:
        return await msg.reply_text("Usage:\n\n /animelogo daxx")
