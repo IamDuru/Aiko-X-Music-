@@ -28,7 +28,7 @@ async def blacklist_chat_func(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(["whitelistchat", "unblacklistchat", "unblchat"]) & SUDOERS
+    filters.command(["whitelistchat", "unblacklistchat", "unblchat"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & SUDOERS
 )
 @language
 async def white_funciton(client, message: Message, _):
@@ -43,7 +43,7 @@ async def white_funciton(client, message: Message, _):
     await message.reply_text(_["black_9"])
 
 
-@app.on_message(filters.command(["blchats", "blacklistedchats"]) & ~BANNED_USERS)
+@app.on_message(filters.command(["blchats", "blacklistedchats"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & ~BANNED_USERS)
 @language
 async def all_chats(client, message: Message, _):
     text = _["black_7"]
